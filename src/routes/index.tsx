@@ -17,7 +17,7 @@ export const Route = createFileRoute("/")({
 
 // IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
-  return <main className="min-h-screen bg-dusk">
+  return <main className="min-h-screen bg-background">
     <section className="relative mx-auto max-w-[1536px] overflow-hidden">
       <img src={overview.url} alt="Nine Stages of Love overlooking a glowing sunset city" className="block h-auto w-full" width={1536} height={768} />
       <Link to="/stage/$stageId" params={{ stageId: "1" }} aria-label="Begin with stage one: Meetup" className="absolute bottom-[5%] left-[21%] hidden h-[9%] w-[25%] rounded-full focus:outline-none focus-visible:ring-4 focus-visible:ring-ring md:block" />
