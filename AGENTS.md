@@ -8,3 +8,5 @@
 > Commits you push to the connected branch sync back to Lovable and show up in
 > the editor, so keep the branch in a working state.
 <!-- LOVABLE:END -->
+
+- The love-story experience uses one data-driven dynamic stage route for all nine chapters, keeping navigation and copy consistent.
