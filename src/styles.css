@@ -170,6 +170,32 @@
   box-shadow: 0 14px 45px color-mix(in oklab, var(--attraction-plum) 42%, transparent);
 }
 
+.confession-shade {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 50%, transparent), transparent 28%, transparent 72%, color-mix(in oklab, var(--attraction-plum) 32%, transparent));
+}
+
+.confession-header {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 70%, transparent), transparent);
+}
+
+.confession-title {
+  background: color-mix(in oklab, var(--attraction-paper) 93%, transparent);
+  box-shadow: 0 7px 24px color-mix(in oklab, var(--attraction-plum) 22%, transparent);
+  border-radius: 40% 12% 36% 13% / 11% 23% 15% 18%;
+}
+
+.confession-sign {
+  background: color-mix(in oklab, var(--attraction-paper) 88%, transparent);
+  border-radius: 3px;
+  box-shadow: 0 2px 8px color-mix(in oklab, var(--attraction-plum) 32%, transparent);
+}
+
+.confession-letter {
+  background: color-mix(in oklab, var(--attraction-paper) 97%, transparent);
+  border-radius: 6px 16px 12px 9px;
+  box-shadow: 0 14px 45px color-mix(in oklab, var(--attraction-plum) 42%, transparent);
+}
+
 @media (max-width: 1023px) {
   .attraction-letter { border-radius: 30px 28px 24px 26px; }
 }
