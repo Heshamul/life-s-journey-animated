@@ -1,4 +1,5 @@
 import meetupPanel from "@/assets/stage-meetup-panel.jpg";
+import attractionScene from "@/assets/stage-attraction-scene.jpg";
 import confession from "@/assets/love-confession.jpg";
 import trust from "@/assets/love-trust.jpg";
 import forever from "@/assets/love-forever.jpg";
@@ -39,11 +40,22 @@ export const stages: Stage[] = [
   {
     id: 2,
     title: "Attraction",
-    short: "Those little feelings that pull us closer…",
+    short: "And then... I started liking you a little more",
     letter: [
-      "A glance lasted a little longer. Every laugh felt brighter, every silence felt easy, and somehow the world seemed softer whenever you were near.",
+      "I think somewhere between all our calls, texts, random conversations and those little moments...",
+      "**I started liking you a little more than I expected.** ❤️",
+      "And honestly, it’s not just because I find you beautiful. It’s the person you are.",
+      "I really admire how **ambitious and hardworking** you are. The way you take your studies and your work seriously, the way you know what you want, and the way you don’t tolerate things that you feel are wrong.",
+      "**I genuinely respect that about you.** ❤️",
+      "And the funny part is... **your ambition makes me want to work harder too.** Seeing you put so much effort into your goals makes me want to push myself a little more, so that extra mile and become better at what I do.",
+      "I don’t know if you realize it, but **you inspire me without even trying.** ❤️",
+      "I don’t just like talking to you... **I like the person I become when I’m around your energy.**",
+      "We still haven’t met in person, but somehow, through all these calls and messages, you’ve become someone I genuinely look forward to talking to. Someone I want to know better.",
+      "Someone I’m getting a little more attached to with every conversation. 🥰",
+      "So maybe this is what **Stage 02** is about... Not just finding someone attractive, but slowly discovering **who you are**. ❤️",
     ],
-    image: meetupPanel,
+    closing: "And Sunshine... I’m really liking what I’m discovering about you. 🌸",
+    image: attractionScene,
     symbol: "♡",
   },
   {

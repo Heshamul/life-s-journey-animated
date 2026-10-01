@@ -63,6 +63,12 @@
   --color-sidebar-ring: var(--sidebar-ring);
   --color-glow: var(--glow);
   --color-dusk: var(--dusk);
+  --color-attraction-light: var(--attraction-light);
+  --color-attraction-paper: var(--attraction-paper);
+  --color-attraction-pink: var(--attraction-pink);
+  --color-attraction-ink: var(--attraction-ink);
+  --color-attraction-body: var(--attraction-body);
+  --color-attraction-plum: var(--attraction-plum);
 }
 
 :root {
@@ -88,6 +94,12 @@
   --ring: oklch(0.66 0.22 355);
   --glow: oklch(0.75 0.18 350);
   --dusk: oklch(0.955 0.03 20);
+  --attraction-light: oklch(0.99 0.01 20);
+  --attraction-paper: oklch(0.965 0.035 36);
+  --attraction-pink: oklch(0.69 0.21 357);
+  --attraction-ink: oklch(0.43 0.17 8);
+  --attraction-body: oklch(0.30 0.035 20);
+  --attraction-plum: oklch(0.32 0.09 320);
   --chart-1: oklch(0.646 0.222 41.116);
   --chart-2: oklch(0.6 0.118 184.704);
   --chart-3: oklch(0.398 0.07 227.392);
@@ -136,6 +148,30 @@
   --sidebar-accent-foreground: oklch(0.984 0.003 247.858);
   --sidebar-border: oklch(1 0 0 / 10%);
   --sidebar-ring: oklch(0.551 0.027 264.364);
+  --attraction-light: oklch(0.99 0.01 20);
+  --attraction-paper: oklch(0.965 0.035 36);
+  --attraction-pink: oklch(0.69 0.21 357);
+  --attraction-ink: oklch(0.43 0.17 8);
+  --attraction-body: oklch(0.30 0.035 20);
+  --attraction-plum: oklch(0.32 0.09 320);
+}
+
+.attraction-shade {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 64%, transparent), transparent 30%, transparent 75%, color-mix(in oklab, var(--attraction-plum) 48%, transparent));
+}
+
+.attraction-header {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 75%, transparent), transparent);
+}
+
+.attraction-letter {
+  background: color-mix(in oklab, var(--attraction-paper) 96%, transparent);
+  border-radius: 42% 12% 18% 9% / 5% 7% 5% 4%;
+  box-shadow: 0 14px 45px color-mix(in oklab, var(--attraction-plum) 42%, transparent);
+}
+
+@media (max-width: 1023px) {
+  .attraction-letter { border-radius: 30px 28px 24px 26px; }
 }
 
 @layer base {

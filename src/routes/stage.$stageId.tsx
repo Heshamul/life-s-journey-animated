@@ -1,6 +1,7 @@
 import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Heart } from "lucide-react";
 import { stages } from "@/lib/stages";
+import { Button } from "@/components/ui/button";
 
 export const Route = createFileRoute("/stage/$stageId")({
   loader: ({ params }) => {
@@ -41,6 +42,71 @@ function LetterParagraph({ text }: { text: string }) {
 
 function StagePage() {
   const stage = Route.useLoaderData();
+  if (stage.id === 2) return <AttractionPage />;
+
+  return <StandardStagePage stage={stage} />;
+}
+
+function AttractionPage() {
+  const stage = Route.useLoaderData();
+
+  return (
+    <main className="attraction-page relative isolate min-h-svh overflow-hidden bg-background text-foreground">
+      <img src={stage.image} alt="Two people smiling over their laptops in separate rooms overlooking a sunset city" width={1600} height={1008} className="absolute inset-0 -z-10 h-full w-full object-cover object-[30%_center] lg:object-center" />
+      <div className="attraction-shade pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+
+      <div className="mx-auto max-w-[1600px]">
+        <header className="attraction-header px-3 pt-3 pb-2 sm:px-6">
+          <Link to="/" className="mx-auto flex w-fit items-center gap-3 font-display text-3xl font-bold text-attraction-light drop-shadow-md sm:text-4xl">
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+            Our 9 Stages of Love
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+          </Link>
+          <nav aria-label="Story chapters" className="mt-2 overflow-x-auto pb-2">
+            <ol className="mx-auto flex w-max items-start justify-center gap-0">
+              {stages.map((item, index) => (
+                <li key={item.id} className="flex items-start">
+                  <Link to="/stage/$stageId" params={{ stageId: String(item.id) }} aria-current={item.id === 2 ? "page" : undefined} className="group flex w-[76px] flex-col items-center gap-1 text-center sm:w-[92px]">
+                    <span className={`flex size-8 items-center justify-center rounded-full border font-sans text-sm font-bold text-attraction-light transition-colors ${item.id === 2 ? "border-attraction-light bg-attraction-pink shadow-lg shadow-primary/50" : "border-attraction-light/80 bg-attraction-plum/60 group-hover:bg-attraction-pink"}`}>{item.id}</span>
+                    <span className={`max-w-full text-[10px] leading-tight text-attraction-light sm:text-xs ${item.id === 2 ? "font-bold" : ""}`}>{item.title}</span>
+                  </Link>
+                  {index < stages.length - 1 && <span aria-hidden="true" className="mt-4 w-2 border-t border-dashed border-attraction-light/70 sm:w-4" />}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </header>
+
+        <div className="grid min-h-[calc(100svh-112px)] grid-cols-1 items-end lg:grid-cols-[54%_46%] lg:items-center">
+          <div className="relative min-h-[340px] sm:min-h-[430px] lg:min-h-0 lg:self-stretch" aria-hidden="true">
+            <div className="absolute top-[7%] right-[7%] hidden rotate-[-5deg] space-y-2 text-attraction-light drop-shadow-md lg:block">
+              {[["Your texts", "♡"], ["Our calls", "☎"], ["Random talks", "☁"], ["Your dreams", "✧"], ["Your goals", "↗"], ["You...", "♥"]].map(([label, icon], index) => (
+                <div key={label} className={`attraction-note w-fit rounded-lg bg-attraction-paper/90 px-4 py-1 font-display text-lg text-attraction-ink shadow-md ${index % 2 ? "ml-6" : ""}`}>{label} <span className="text-attraction-pink">{icon}</span></div>
+              ))}
+            </div>
+            <span className="absolute top-[19%] right-[30%] hidden font-display text-5xl text-attraction-pink animate-float-heart lg:block">♡</span>
+            <span className="absolute bottom-[13%] right-[8%] hidden font-display text-4xl text-attraction-pink animate-float-heart lg:block">♡</span>
+          </div>
+
+          <article className="attraction-letter relative mx-3 mb-4 px-5 py-5 text-center shadow-xl sm:mx-8 sm:px-8 sm:py-6 lg:mx-4 lg:mb-5 lg:px-8 lg:py-5 xl:px-12">
+            <span className="inline-block rounded-full bg-attraction-pink px-5 py-0.5 font-display text-xl text-attraction-light sm:text-2xl">Stage 02</span>
+            <h1 className="mt-0 font-display text-6xl font-bold leading-none text-attraction-ink sm:text-7xl">Attraction</h1>
+            <p className="font-display text-xl font-bold text-attraction-ink sm:text-2xl">{stage.short}</p>
+            <div className="mx-auto mt-4 max-w-[560px] space-y-2.5 font-sans text-[13px] leading-[1.35] text-attraction-body sm:text-sm lg:space-y-2 xl:text-[15px]">
+              {stage.letter.map((paragraph, index) => <p key={index}>{renderEmphasis(paragraph)}</p>)}
+            </div>
+            {stage.closing && <p className="mt-3 font-display text-xl font-bold text-attraction-ink sm:text-2xl">{stage.closing}</p>}
+            <Button asChild className="mt-4 h-auto max-w-full rounded-full border-2 border-attraction-light bg-attraction-pink px-5 py-2.5 text-sm font-semibold text-attraction-light shadow-lg shadow-primary/30 hover:bg-attraction-ink sm:px-7 sm:text-base">
+              <Link to="/stage/$stageId" params={{ stageId: "3" }}>Next Stage <ArrowRight aria-hidden="true" /> Realisation and Confession <Heart className="fill-current" aria-hidden="true" /></Link>
+            </Button>
+          </article>
+        </div>
+      </div>
+    </main>
+  );
+}
+
+function StandardStagePage({ stage }: { stage: (typeof stages)[number] }) {
   const previous = stage.id > 1 ? stage.id - 1 : undefined;
   const nextStage = stage.id < stages.length ? stages[stage.id] : undefined;
 
