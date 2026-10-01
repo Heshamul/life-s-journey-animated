@@ -2,6 +2,7 @@ import { createFileRoute, Link, notFound } from "@tanstack/react-router";
 import { ArrowRight, Heart } from "lucide-react";
 import { stages } from "@/lib/stages";
 import { Button } from "@/components/ui/button";
+import { useState } from "react";
 
 export const Route = createFileRoute("/stage/$stageId")({
   loader: ({ params }) => {
@@ -43,8 +44,82 @@ function LetterParagraph({ text }: { text: string }) {
 function StagePage() {
   const stage = Route.useLoaderData();
   if (stage.id === 2) return <AttractionPage />;
+  if (stage.id === 3) return <ConfessionPage />;
 
   return <StandardStagePage stage={stage} />;
+}
+
+function ConfessionPage() {
+  const stage = Route.useLoaderData();
+  const [answer, setAnswer] = useState<"yes" | "no" | null>(null);
+
+  return (
+    <main className="relative isolate min-h-svh overflow-hidden bg-background">
+      <img src={stage.image} alt="A couple sitting together on a flower-filled balcony at sunset" width={1600} height={1008} className="absolute inset-0 -z-10 h-full w-full object-cover object-[36%_center] lg:object-center" />
+      <div className="confession-shade pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+
+      <div className="mx-auto max-w-[1600px]">
+        <header className="confession-header px-3 pt-2 pb-2 sm:px-6">
+          <Link to="/" className="mx-auto flex w-fit items-center gap-3 font-display text-3xl font-bold text-attraction-light drop-shadow-md sm:text-4xl">
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+            Our 9 Stages of Love
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+          </Link>
+          <nav aria-label="Story chapters" className="mt-1 overflow-x-auto pb-1">
+            <ol className="mx-auto flex w-max items-start justify-center">
+              {stages.map((item, index) => (
+                <li key={item.id} className="flex items-start">
+                  <Link to="/stage/$stageId" params={{ stageId: String(item.id) }} aria-current={item.id === 3 ? "page" : undefined} className="group flex w-[76px] flex-col items-center gap-1 text-center sm:w-[92px]">
+                    <span className={`flex size-8 items-center justify-center rounded-full border font-sans text-sm font-bold text-attraction-light transition-colors ${item.id === 3 ? "border-attraction-light bg-primary shadow-lg shadow-primary/50" : "border-attraction-light/80 bg-attraction-plum/60 group-hover:bg-primary"}`}>{item.id}</span>
+                    <span className={`max-w-full text-[10px] leading-tight text-attraction-light sm:text-xs ${item.id === 3 ? "font-bold" : ""}`}>{item.title}</span>
+                  </Link>
+                  {index < stages.length - 1 && <span aria-hidden="true" className="mt-4 w-2 border-t border-dashed border-attraction-light/70 sm:w-4" />}
+                </li>
+              ))}
+            </ol>
+          </nav>
+        </header>
+
+        <div className="grid min-h-[calc(100svh-104px)] grid-cols-1 lg:grid-cols-[55%_45%]">
+          <div className="relative flex min-h-[420px] flex-col items-center pt-7 text-center sm:min-h-[480px] lg:min-h-0 lg:pt-8">
+            <div className="confession-title relative z-10 w-[min(83%,510px)] px-4 py-2">
+              <span className="inline-block rounded-full bg-primary px-5 py-0.5 font-display text-xl text-primary-foreground">Stage 03</span>
+              <h1 className="font-display text-6xl font-bold leading-[.82] text-attraction-ink sm:text-7xl">Realisation<br />and Confession</h1>
+              <p className="mt-3 font-display text-xl font-bold text-attraction-ink sm:text-2xl">{stage.short}</p>
+            </div>
+            <div className="pointer-events-none absolute top-[18%] left-[2%] hidden rotate-[-3deg] text-left font-display text-lg font-bold text-attraction-ink drop-shadow-md xl:block" aria-hidden="true">
+              {[
+                "Same Person Again and Again ♡", "Your Smile", "Our Conversations", "Your Dreams", "My Motivation", "Our Future", "Always You ♥",
+              ].map((note, index) => <div key={note} className={`confession-sign mb-1 w-fit px-3 py-0.5 ${index % 2 ? "ml-3" : ""}`}>{note}</div>)}
+            </div>
+            <span className="pointer-events-none absolute top-[27%] right-[10%] text-4xl text-primary animate-float-heart" aria-hidden="true">♡</span>
+            <span className="pointer-events-none absolute bottom-[17%] left-[12%] text-3xl text-primary animate-float-heart" aria-hidden="true">♡</span>
+          </div>
+
+          <article className="confession-letter relative mx-3 mb-5 flex flex-col items-center self-start px-5 py-4 text-center sm:mx-8 sm:px-9 lg:mx-4 lg:mt-1 lg:px-8 xl:px-10">
+            <span className="pointer-events-none absolute top-[12%] left-3 font-display text-4xl text-primary/60 animate-float-heart" aria-hidden="true">♡</span>
+            <span className="pointer-events-none absolute right-3 bottom-[18%] font-display text-4xl text-primary/60 animate-float-heart" aria-hidden="true">♡</span>
+            <h2 className="font-display text-3xl font-bold text-attraction-ink sm:text-4xl">HI SUNSHINE ❤️</h2>
+            <div className="mx-auto mt-1 max-w-[480px] space-y-2 font-sans text-[12px] leading-[1.27] text-attraction-body sm:text-[13px] lg:space-y-1.5 xl:text-[13px]">
+              {stage.letter.map((paragraph, index) => <p key={index}>{renderEmphasis(paragraph)}</p>)}
+            </div>
+            <p className="mt-2 font-sans text-sm font-bold text-attraction-body">So, Sunshine...</p>
+            {stage.closing && <p className="font-sans text-sm font-bold text-primary sm:text-[15px]">{stage.closing}</p>}
+            <div className="mt-3 grid w-full max-w-[430px] grid-cols-2 gap-3">
+              <Button type="button" aria-pressed={answer === "yes"} onClick={() => setAnswer("yes")} className="h-10 rounded-full border-2 border-primary-foreground bg-primary font-display text-2xl text-primary-foreground shadow-lg shadow-primary/30 hover:bg-accent">♥ &nbsp;Yes</Button>
+              <Button type="button" aria-pressed={answer === "no"} onClick={() => setAnswer("no")} className="h-10 rounded-full border border-primary bg-card font-display text-2xl text-attraction-ink shadow-md hover:bg-secondary">♡ &nbsp;No</Button>
+            </div>
+            <div role="status" aria-live="polite" className="mt-2 min-h-5 font-display text-xl font-bold text-attraction-ink">
+              {answer === "yes" ? "You just made my heart so happy. ❤️" : answer === "no" ? "Whatever your answer, I’ll always respect it. ♡" : ""}
+            </div>
+            <Button asChild className="mt-1 h-10 max-w-full rounded-full border-2 border-primary-foreground bg-primary px-5 font-display text-xl text-primary-foreground shadow-lg shadow-primary/30 hover:bg-accent">
+              <Link to="/stage/$stageId" params={{ stageId: "4" }}>Next Stage <ArrowRight aria-hidden="true" /> Misunderstanding <Heart className="fill-current" aria-hidden="true" /></Link>
+            </Button>
+          </article>
+        </div>
+      </div>
+    </main>
+  );
 }
 
 function AttractionPage() {

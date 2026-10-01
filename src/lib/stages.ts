@@ -1,5 +1,6 @@
 import meetupPanel from "@/assets/stage-meetup-panel.jpg";
 import attractionScene from "@/assets/stage-attraction-scene.jpg";
+import confessionScene from "@/assets/stage-confession-scene.jpg";
 import confession from "@/assets/love-confession.jpg";
 import trust from "@/assets/love-trust.jpg";
 import forever from "@/assets/love-forever.jpg";
@@ -61,11 +62,18 @@ export const stages: Stage[] = [
   {
     id: 3,
     title: "Realisation & Confession",
-    short: "When hearts finally speak…",
+    short: "Because now I know... I want you. ❤️",
     letter: [
-      "Courage arrived in a small, honest moment. The words were simple, but behind them lived every hope our hearts had been too shy to say.",
+      "I know I’m not perfect... And I know I may not always have the right words, or always know exactly what to do... But there is one thing I know for sure — **I want to be better for you.** ❤️",
+      "I promise to always try to make you smile, to be there when you need someone, to listen to you even when you don’t feel like talking, and to hold your hand through the good days and the difficult ones. **I want to take care of you in all the little ways that matter.**",
+      "I want to know what makes you happy, remember the things you casually mention, celebrate your smallest achievements, make you laugh when you’re having a bad day, and remind you just how special you are when you forget it yourself.",
+      "I want to treat you with the kind of love that makes you feel safe, valued, respected and adored. **I want to make you feel like the happiest person in the world.** 🥰❤️",
+      "And if you let me... **I’ll keep choosing you.** Again and again. On the easy days. On the difficult days. On the days when we’re laughing until our stomachs hurt. And even on the days when all you need is a quiet hug.",
+      "Because I don’t just want to love you... **I want to take care of your heart.** ❤️",
+      "I want to love you like there is no tomorrow, make memories that we’ll talk about years from now, and give you a thousand reasons to smile.",
     ],
-    image: confession,
+    closing: "Will you let me be the person who gets to love you? 🌸❤️",
+    image: confessionScene,
     symbol: "✉",
   },
   {
