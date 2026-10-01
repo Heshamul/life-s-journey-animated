@@ -10,3 +10,4 @@
 <!-- LOVABLE:END -->
 
 - The love-story experience uses one data-driven dynamic stage route for all nine chapters, keeping navigation and copy consistent.
+- Attraction uses a stage-specific presentation within the shared dynamic route, so its reference-driven scene can differ without changing the other chapters.
