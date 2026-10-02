@@ -2,6 +2,7 @@ import meetupPanel from "@/assets/stage-meetup-panel.jpg";
 import attractionScene from "@/assets/stage-attraction-scene.jpg";
 import confessionScene from "@/assets/stage-confession-scene.jpg";
 import misunderstandingScene from "@/assets/stage-misunderstanding-scene.jpg";
+import trustScene from "@/assets/stage-trust-scene.jpg";
 import confession from "@/assets/love-confession.jpg";
 import trust from "@/assets/love-trust.jpg";
 import forever from "@/assets/love-forever.jpg";
@@ -96,11 +97,18 @@ export const stages: Stage[] = [
   {
     id: 5,
     title: "Trust",
-    short: "Believing, even when it isn't easy…",
+    short: "And slowly... we started trusting each other. ❤️",
     letter: [
-      "Love became a safe place: not perfect, but true. A promise that doubts could be spoken, fears could be held, and neither heart had to hide.",
+      "I think trust isn’t something you can ask for. **It’s something you build.**",
+      "Through the little things. Keeping your word. Being honest. Being there when you say you will be. Feeling comfortable enough to say what’s on your mind without being afraid of being judged.",
+      "**And with you, I want to build exactly that.** ❤️",
+      "I want you to know that you can be yourself with me. You don’t have to pretend. You don’t have to hide your feelings. You don’t have to worry about saying the wrong thing.",
+      "**You can simply be you.** ❤️",
+      "I want to earn your trust — not just with words, but with my actions. And I hope that, little by little, you feel that you can trust me with your thoughts, your feelings, your dreams and even your little fears.",
+      "Because for me...",
     ],
-    image: trust,
+    closing: "**Trust is knowing that even when things aren’t perfect, we can still count on each other.** 🥰❤️ And Sunshine, I hope we’re slowly building something where both of us can say... **“I know I’ve got you.”** ❤️",
+    image: trustScene,
     symbol: "∞",
   },
   {
