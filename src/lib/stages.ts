@@ -1,6 +1,7 @@
 import meetupPanel from "@/assets/stage-meetup-panel.jpg";
 import attractionScene from "@/assets/stage-attraction-scene.jpg";
 import confessionScene from "@/assets/stage-confession-scene.jpg";
+import misunderstandingScene from "@/assets/stage-misunderstanding-scene.jpg";
 import confession from "@/assets/love-confession.jpg";
 import trust from "@/assets/love-trust.jpg";
 import forever from "@/assets/love-forever.jpg";
@@ -79,11 +80,17 @@ export const stages: Stage[] = [
   {
     id: 4,
     title: "Misunderstanding",
-    short: "Even in confusion, we choose each other…",
+    short: "Not every chapter will be perfect... and that’s okay. ❤️",
     letter: [
-      "Not every sky stays clear. We learned to listen beneath the words, to be gentle with tender places, and to reach back for each other.",
+      "Sometimes words don’t come out the way we mean them. Sometimes we misunderstand each other, overthink a little, or get hurt over things that were never meant to hurt us.",
+      "**And maybe that’s going to happen with us too.** Because we’re still learning about each other.",
+      "But I don’t want a misunderstanding to become a reason to walk away. **I want it to become a reason to understand you better.** ❤️",
+      "I want us to talk instead of assuming. Listen instead of reacting. And choose each other even when things aren’t completely easy.",
+      "**Because I don’t expect us to be perfect.**",
+      "**I just want us to be honest enough to work through the imperfect moments together.** ❤️",
     ],
-    image: trust,
+    closing: "After all, it’s not about never having misunderstandings... It’s about never letting them become bigger than what we have. 🥰",
+    image: misunderstandingScene,
     symbol: "☂",
   },
   {

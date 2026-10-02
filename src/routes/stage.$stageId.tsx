@@ -45,8 +45,71 @@ function StagePage() {
   const stage = Route.useLoaderData();
   if (stage.id === 2) return <AttractionPage />;
   if (stage.id === 3) return <ConfessionPage />;
+  if (stage.id === 4) return <MisunderstandingPage />;
 
   return <StandardStagePage stage={stage} />;
+}
+
+function StoryStepper({ activeId }: { activeId: number }) {
+  return (
+    <nav aria-label="Story chapters" className="mt-1 overflow-x-auto pb-1">
+      <ol className="mx-auto flex w-max items-start justify-center">
+        {stages.map((item, index) => (
+          <li key={item.id} className="flex items-start">
+            <Link to="/stage/$stageId" params={{ stageId: String(item.id) }} aria-current={item.id === activeId ? "page" : undefined} className="group flex w-[76px] flex-col items-center gap-1 text-center sm:w-[92px]">
+              <span className={`flex size-8 items-center justify-center rounded-full border font-sans text-sm font-bold text-attraction-light transition-colors ${item.id === activeId ? "border-attraction-light bg-primary shadow-lg shadow-primary/50" : "border-attraction-light/80 bg-attraction-plum/60 group-hover:bg-primary"}`}>{item.id}</span>
+              <span className={`max-w-full text-[10px] leading-tight text-attraction-light sm:text-xs ${item.id === activeId ? "font-bold" : ""}`}>{item.title}</span>
+            </Link>
+            {index < stages.length - 1 && <span aria-hidden="true" className="mt-4 w-2 border-t border-dashed border-attraction-light/70 sm:w-4" />}
+          </li>
+        ))}
+      </ol>
+    </nav>
+  );
+}
+
+function MisunderstandingPage() {
+  const stage = Route.useLoaderData();
+
+  return (
+    <main className="relative isolate min-h-svh overflow-hidden bg-attraction-plum">
+      <img src={stage.image} alt="Two people in separate rooms quietly overthinking at night" width={1600} height={1008} className="absolute inset-0 -z-10 h-full w-full object-cover object-[32%_center] lg:object-center" />
+      <div className="misunderstanding-shade pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+
+      <div className="mx-auto max-w-[1600px]">
+        <header className="misunderstanding-header px-3 pt-2 pb-2 sm:px-6">
+          <Link to="/" className="mx-auto flex w-fit items-center gap-3 font-display text-3xl font-bold text-attraction-light drop-shadow-md sm:text-4xl">
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+            Our 9 Stages of Love
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+          </Link>
+          <StoryStepper activeId={4} />
+        </header>
+
+        <div className="grid min-h-[calc(100svh-104px)] grid-cols-1 lg:grid-cols-[55%_45%] lg:items-center">
+          <div className="relative min-h-[430px] sm:min-h-[520px] lg:min-h-0 lg:self-stretch" aria-hidden="true">
+            <div className="absolute top-[8%] left-[7%] hidden rotate-[-4deg] rounded-md bg-attraction-paper/90 px-4 py-2 font-display text-xl font-bold text-attraction-ink shadow-lg lg:block">Sometimes<br />I overthink... <span className="text-primary">♥</span></div>
+            <div className="misunderstanding-thought absolute top-[18%] right-[13%] hidden font-display text-lg font-bold text-attraction-ink lg:block">Did I say<br />something wrong?</div>
+            <div className="misunderstanding-thought absolute right-[4%] bottom-[27%] hidden font-display text-lg font-bold text-attraction-ink lg:block">Maybe I<br />misunderstood...</div>
+            <div className="absolute bottom-[7%] left-[29%] hidden rotate-[-2deg] rounded-sm bg-attraction-paper/90 px-4 py-2 text-center font-display text-xl font-bold text-attraction-ink shadow-lg lg:block">It’s Okay<br />We’ll Figure It Out<br />Together <span className="text-primary">♥</span></div>
+          </div>
+
+          <article className="misunderstanding-letter relative mx-3 mb-5 flex flex-col items-center px-5 py-5 text-center sm:mx-8 sm:px-9 lg:mx-4 lg:mb-4 lg:px-8 xl:px-11">
+            <span className="inline-block rounded-full bg-primary px-6 py-1 font-display text-xl text-primary-foreground sm:text-2xl">Stage 04</span>
+            <h1 className="mt-1 font-display text-5xl font-bold leading-none text-attraction-ink sm:text-7xl">♡ Misunderstanding ♡</h1>
+            <p className="mt-2 font-display text-xl font-bold text-primary sm:text-2xl">{stage.short}</p>
+            <div className="mx-auto mt-4 max-w-[570px] space-y-3 font-sans text-[13px] leading-[1.4] text-attraction-body sm:text-sm xl:text-[15px]">
+              {stage.letter.map((paragraph, index) => <p key={index}>{renderEmphasis(paragraph)}</p>)}
+            </div>
+            {stage.closing && <p className="mt-4 max-w-[570px] font-sans text-sm font-bold text-attraction-body sm:text-[15px]">{renderEmphasis(stage.closing)}</p>}
+            <Button asChild className="mt-5 h-auto max-w-full rounded-full border-2 border-primary-foreground bg-primary px-7 py-2.5 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 hover:bg-attraction-ink sm:px-10">
+              <Link to="/stage/$stageId" params={{ stageId: "5" }}>Next Stage <ArrowRight aria-hidden="true" /> Trust <Heart className="fill-current" aria-hidden="true" /></Link>
+            </Button>
+          </article>
+        </div>
+      </div>
+    </main>
+  );
 }
 
 function ConfessionPage() {

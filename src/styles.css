@@ -196,8 +196,31 @@
   box-shadow: 0 14px 45px color-mix(in oklab, var(--attraction-plum) 42%, transparent);
 }
 
+.misunderstanding-shade {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 58%, transparent), transparent 30%, transparent 76%, color-mix(in oklab, var(--attraction-plum) 44%, transparent));
+}
+
+.misunderstanding-header {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 78%, transparent), transparent);
+}
+
+.misunderstanding-letter {
+  background: color-mix(in oklab, var(--attraction-paper) 97%, transparent);
+  border-radius: 48% 8% 44% 9% / 5% 4% 6% 5%;
+  box-shadow: 0 14px 48px color-mix(in oklab, var(--attraction-plum) 45%, transparent);
+}
+
+.misunderstanding-thought {
+  background: color-mix(in oklab, var(--attraction-paper) 94%, transparent);
+  border-radius: 48% 52% 44% 56% / 58% 43% 57% 42%;
+  padding: 0.7rem 1.15rem;
+  text-align: center;
+  box-shadow: 0 5px 16px color-mix(in oklab, var(--attraction-plum) 34%, transparent);
+}
+
 @media (max-width: 1023px) {
   .attraction-letter { border-radius: 30px 28px 24px 26px; }
+  .misunderstanding-letter { border-radius: 28px 24px 30px 22px; }
 }
 
 @layer base {
