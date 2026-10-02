@@ -12,3 +12,4 @@
 - The love-story experience uses one data-driven dynamic stage route for all nine chapters, keeping navigation and copy consistent.
 - Attraction uses a stage-specific presentation within the shared dynamic route, so its reference-driven scene can differ without changing the other chapters.
 - Realisation and Confession uses a stage-specific presentation in the shared dynamic route, keeping its interactive answer local to the page and respecting either choice.
+- Misunderstanding uses a stage-specific split-room presentation and intentionally offers only forward chapter navigation.
