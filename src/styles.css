@@ -218,9 +218,34 @@
   box-shadow: 0 5px 16px color-mix(in oklab, var(--attraction-plum) 34%, transparent);
 }
 
+.trust-shade {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 54%, transparent), transparent 28%, transparent 76%, color-mix(in oklab, var(--attraction-plum) 36%, transparent));
+}
+
+.trust-header {
+  background: linear-gradient(to bottom, color-mix(in oklab, var(--attraction-plum) 76%, transparent), transparent);
+}
+
+.trust-letter {
+  background: color-mix(in oklab, var(--attraction-paper) 97%, transparent);
+  border-radius: 44% 8% 42% 10% / 5% 4% 6% 5%;
+  box-shadow: 0 14px 48px color-mix(in oklab, var(--attraction-plum) 40%, transparent);
+}
+
+.trust-note {
+  background: color-mix(in oklab, var(--attraction-paper) 90%, var(--attraction-pink));
+  box-shadow: 0 3px 10px color-mix(in oklab, var(--attraction-plum) 34%, transparent);
+}
+
+.trust-closing {
+  background: color-mix(in oklab, var(--attraction-pink) 20%, transparent);
+  border-radius: 48% 12% 44% 14% / 22% 28% 18% 25%;
+}
+
 @media (max-width: 1023px) {
   .attraction-letter { border-radius: 30px 28px 24px 26px; }
   .misunderstanding-letter { border-radius: 28px 24px 30px 22px; }
+  .trust-letter { border-radius: 28px 24px 30px 22px; }
 }
 
 @layer base {

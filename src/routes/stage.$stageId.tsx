@@ -46,8 +46,57 @@ function StagePage() {
   if (stage.id === 2) return <AttractionPage />;
   if (stage.id === 3) return <ConfessionPage />;
   if (stage.id === 4) return <MisunderstandingPage />;
+  if (stage.id === 5) return <TrustPage />;
 
   return <StandardStagePage stage={stage} />;
+}
+
+function TrustPage() {
+  const stage = Route.useLoaderData();
+
+  return (
+    <main className="relative isolate min-h-svh overflow-hidden bg-attraction-plum">
+      <img src={stage.image} alt="A couple sharing a safe, quiet moment on a flower-filled balcony at sunset" width={1600} height={1008} className="absolute inset-0 -z-10 h-full w-full object-cover object-[34%_center] lg:object-center" />
+      <div className="trust-shade pointer-events-none absolute inset-0 -z-10" aria-hidden="true" />
+
+      <div className="mx-auto max-w-[1600px]">
+        <header className="trust-header px-3 pt-2 pb-2 sm:px-6">
+          <Link to="/" className="mx-auto flex w-fit items-center gap-3 font-display text-3xl font-bold text-attraction-light drop-shadow-md sm:text-4xl">
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+            Our 9 Stages of Love
+            <Heart className="size-5 fill-attraction-pink text-attraction-pink" aria-hidden="true" />
+          </Link>
+          <StoryStepper activeId={5} />
+        </header>
+
+        <div className="grid min-h-[calc(100svh-104px)] grid-cols-1 lg:grid-cols-[57%_43%] lg:items-center">
+          <div className="relative min-h-[430px] sm:min-h-[520px] lg:min-h-0 lg:self-stretch" aria-hidden="true">
+            <div className="absolute top-[7%] left-[5%] hidden rotate-[-4deg] rounded-sm bg-attraction-paper/90 px-4 py-2 text-center font-display text-xl font-bold text-attraction-ink shadow-lg xl:block">You Can Be<br />Yourself With Me <span className="text-primary">♥</span></div>
+            <div className="absolute top-[27%] left-[3%] hidden space-y-1 font-display text-lg font-bold text-attraction-ink lg:block">
+              {["Honesty ♥", "Consistency ♥", "Little Things ♥", "Real Conversations ♥", "A Safe Space ♥"].map((note, index) => <div key={note} className={`trust-note rotate-[-2deg] px-3 py-1 text-center ${index % 2 ? "ml-3" : ""}`}>{note}</div>)}
+            </div>
+            <div className="absolute right-[6%] top-[13%] hidden rotate-[-8deg] font-display text-2xl font-bold text-attraction-light drop-shadow-md lg:block">Same<br />Team<br />Always <span className="text-primary">♥</span></div>
+            <div className="absolute bottom-[5%] left-[3%] hidden space-y-1 font-display text-base text-attraction-light lg:block">
+              {["Your Thoughts", "Your Feelings", "Your Dreams", "Your Fears", "Our Honesty", "Our Comfort", "Our Trust", "Always Us ♥"].map((note) => <div key={note} className="rounded-sm bg-attraction-plum/80 px-4 py-0.5 shadow-md">{note}</div>)}
+            </div>
+          </div>
+
+          <article className="trust-letter relative mx-3 mb-5 flex flex-col items-center px-5 py-5 text-center sm:mx-8 sm:px-9 lg:mx-3 lg:mb-4 lg:px-8 xl:px-10">
+            <span className="inline-block rounded-full bg-primary px-6 py-1 font-display text-xl text-primary-foreground sm:text-2xl">Stage 05</span>
+            <h1 className="mt-1 font-display text-6xl font-bold leading-none text-attraction-ink sm:text-7xl">♡ Trust ♡</h1>
+            <p className="mt-1 font-display text-xl font-bold text-primary sm:text-2xl">{stage.short}</p>
+            <div className="mx-auto mt-3 max-w-[570px] space-y-2.5 font-sans text-[13px] leading-[1.35] text-attraction-body sm:text-sm xl:text-[15px]">
+              {stage.letter.map((paragraph, index) => <p key={index}>{renderEmphasis(paragraph)}</p>)}
+            </div>
+            {stage.closing && <p className="trust-closing mt-3 max-w-[570px] px-4 py-2 font-sans text-sm font-bold text-attraction-body sm:text-[15px]">{renderEmphasis(stage.closing)}</p>}
+            <Button asChild className="mt-4 h-auto max-w-full rounded-full border-2 border-primary-foreground bg-primary px-7 py-2.5 text-base font-semibold text-primary-foreground shadow-lg shadow-primary/30 hover:bg-attraction-ink sm:px-10">
+              <Link to="/stage/$stageId" params={{ stageId: "6" }}><Heart className="fill-current" aria-hidden="true" /> Next Stage <ArrowRight aria-hidden="true" /> Promises <Heart className="fill-current" aria-hidden="true" /></Link>
+            </Button>
+          </article>
+        </div>
+      </div>
+    </main>
+  );
 }
 
 function StoryStepper({ activeId }: { activeId: number }) {
